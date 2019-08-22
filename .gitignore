@@ -2,6 +2,7 @@
 
 .DS_Store
 .gradle/
-gradlew
 .idea/
 out/
+
+selenium-java.iml
