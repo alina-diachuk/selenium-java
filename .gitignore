@@ -1,0 +1,7 @@
+# Virtual machine
+
+.DS_Store
+.gradle/
+gradlew
+.idea/
+out/
