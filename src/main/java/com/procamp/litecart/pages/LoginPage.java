@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
 
-    @FindBy(xpath = " ")
+    @FindBy(xpath = "//div[@class = 'footer']//button[@name = 'login']")
     private WebElement btnLogin;
 
     public LoginPage(WebDriver wd) {

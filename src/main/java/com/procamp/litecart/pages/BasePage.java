@@ -13,8 +13,8 @@ public class BasePage {
     public WebDriver wd;
 
 
-    public BasePage(WebDriver driver) {
-        this.wd = driver;
+    public BasePage(WebDriver wd) {
+        this.wd = wd;
         PageFactory.initElements(this.wd, this);
     }
 
@@ -26,6 +26,12 @@ public class BasePage {
     public void waitForPageLoad() {
         new WebDriverWait(wd, 60).until((ExpectedCondition<Boolean>) wd ->
                 ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
+    }
+
+    public void jsClick(WebDriver wd) {
+        JavascriptExecutor js = (JavascriptExecutor) wd;
+        WebDriverWait wait = new WebDriverWait(wd, 5);
+
     }
 
 }
