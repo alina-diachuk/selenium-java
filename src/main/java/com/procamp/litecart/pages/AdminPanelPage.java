@@ -27,12 +27,20 @@ public class AdminPanelPage extends BasePage {
             WebElement element = wd.findElement(By.xpath(format));
             System.out.println(element.getText());
             element.click();
+            WebElement H1 = wd.findElement(By.xpath("//h1"));
+            if (H1 != null) {
+                boolean Head = H1.isDisplayed();
+            }
+
+
             List<WebElement> subElements = wd.findElements(By.xpath(format.concat(String.format("//li"))));
             for (int i = 0; i < subElements.size(); i++) {
                 WebElement subElement = wd.findElement(By.xpath(format.concat(String.format("//li[%s]", i + 1))));
                 if (!subElement.getAttribute("class").equals("selected")) {
                     System.out.println(subElement.getText());
                     subElement.click();
+                    WebElement subH1 = wd.findElement(By.xpath("//h1"));
+                    boolean subHead = subH1.isDisplayed();
                 }
             }
         }
