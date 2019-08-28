@@ -28,10 +28,4 @@ public class BasePage {
                 ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete"));
     }
 
-    public void jsClick(WebDriver wd) {
-        JavascriptExecutor js = (JavascriptExecutor) wd;
-        WebDriverWait wait = new WebDriverWait(wd, 5);
-
-    }
-
 }
