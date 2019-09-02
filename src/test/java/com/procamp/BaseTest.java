@@ -34,6 +34,7 @@ public abstract class BaseTest {
 
     @After
     public void tearDown() {
+        wd.manage().deleteAllCookies();
         wd.quit();
     }
 }

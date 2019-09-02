@@ -10,37 +10,45 @@ import java.util.List;
 public class AdminPanelPage extends BasePage {
 
     @FindBy(xpath = "//div[@id = 'logotype']")
-    public WebElement siteLogo;
+    private WebElement siteLogo;
 
-    @FindBy(xpath = "//div[@id = 'box-apps-menu-wrapper']//ul[@id='box-apps-menu']//li")
+    @FindBy(xpath = "//div[@id = 'sidebar']//ul[@id='box-apps-menu']/li")
     private List<WebElement> listOfMenuItem;
+
+    @FindBy(xpath = "//div[@class='panel-heading']")
+    private List<WebElement> panelHeading;
 
 
     public AdminPanelPage(WebDriver wd) {
         super(wd);
     }
 
+    public boolean logoIsDisplayed() {
+        return siteLogo.isDisplayed();
+
+    }
+
     public void openListOfMenuItems() {
         int basicCount = listOfMenuItem.size();
         for (int j = 0; j < basicCount; j++) {
-            String format = String.format("//div[@id = 'box-apps-menu-wrapper']//ul[@id='box-apps-menu']/li[%s]", j + 1);
+            String format = String.format("//div[@id = 'sidebar']//ul[@id='box-apps-menu']/li[%s]", j + 1);
             WebElement element = wd.findElement(By.xpath(format));
             System.out.println(element.getText());
             element.click();
-            WebElement H1 = wd.findElement(By.xpath("//h1"));
-            if (H1 != null) {
-                boolean Head = H1.isDisplayed();
-            }
+            Boolean isPresentHeading = panelHeading.size() > 0;
+            System.out.println(isPresentHeading);
 
 
             List<WebElement> subElements = wd.findElements(By.xpath(format.concat(String.format("//li"))));
-            for (int i = 0; i < subElements.size(); i++) {
-                WebElement subElement = wd.findElement(By.xpath(format.concat(String.format("//li[%s]", i + 1))));
+            for (int i = 1; i <= subElements.size(); i++) {
+                WebElement subElement = wd.findElement(By.xpath(format.concat(String.format("//li[%s]", i))));
                 if (!subElement.getAttribute("class").equals("selected")) {
                     System.out.println(subElement.getText());
                     subElement.click();
-                    WebElement subH1 = wd.findElement(By.xpath("//h1"));
-                    boolean subHead = subH1.isDisplayed();
+                    Boolean isPresentSubHeading = panelHeading.size() > 0;
+                    System.out.println(isPresentSubHeading);
+
+
                 }
             }
         }
