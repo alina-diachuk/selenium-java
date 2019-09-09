@@ -16,6 +16,9 @@ public abstract class BaseTest {
     protected LoginPage loginPage;
     protected AdminPanelPage adminPanelPage;
 
+    protected abstract String getUrl();
+
+
 
     @Before
     public void setUp() {
@@ -23,7 +26,7 @@ public abstract class BaseTest {
         wd = new ChromeDriver();
         wd.manage().window().maximize();
 
-        wd.get("http://demo.litecart.net/admin/");
+        wd.get(getUrl());
         wd.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
         wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
