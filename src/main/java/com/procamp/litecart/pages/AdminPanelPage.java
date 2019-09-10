@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.util.List;
 
@@ -19,8 +20,8 @@ public class AdminPanelPage extends BasePage {
     private List<WebElement> panelHeading;
 
 
-    public AdminPanelPage(WebDriver wd) {
-        super(wd);
+    public AdminPanelPage(EventFiringWebDriver ewd) {
+        super(ewd);
     }
 
     public boolean logoIsDisplayed() {
@@ -32,16 +33,16 @@ public class AdminPanelPage extends BasePage {
         int basicCount = listOfMenuItem.size();
         for (int j = 0; j < basicCount; j++) {
             String format = String.format("//div[@id = 'sidebar']//ul[@id='box-apps-menu']/li[%s]", j + 1);
-            WebElement element = wd.findElement(By.xpath(format));
+            WebElement element = ewd.findElement(By.xpath(format));
             System.out.println(element.getText());
             element.click();
             Boolean isPresentHeading = panelHeading.size() > 0;
             System.out.println(isPresentHeading);
 
 
-            List<WebElement> subElements = wd.findElements(By.xpath(format.concat(String.format("//li"))));
+            List<WebElement> subElements = ewd.findElements(By.xpath(format.concat(String.format("//li"))));
             for (int i = 1; i <= subElements.size(); i++) {
-                WebElement subElement = wd.findElement(By.xpath(format.concat(String.format("//li[%s]", i))));
+                WebElement subElement = ewd.findElement(By.xpath(format.concat(String.format("//li[%s]", i))));
                 if (!subElement.getAttribute("class").equals("selected")) {
                     System.out.println(subElement.getText());
                     subElement.click();
@@ -52,5 +53,6 @@ public class AdminPanelPage extends BasePage {
                 }
             }
         }
+
     }
 }

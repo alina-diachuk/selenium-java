@@ -9,11 +9,6 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
 }
-//subprojects {
-//    tasks.withType(Test) {
-//        maxParallelForks = Runtime.runtime.availableProcessors()
-//    }
-//}
 
 dependencies {
     implementation group: 'junit', name: 'junit', version: '4.12'

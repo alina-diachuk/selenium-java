@@ -27,8 +27,8 @@ public class Listener extends AbstractWebDriverEventListener {
     }
 
     @Override
-    public void afterClickOn(WebElement element, WebDriver driver) {
-        highlight(element, "green", driver);
+    public void beforeClickOn(WebElement element, WebDriver wd) {
+        highlight(element, "green", wd);
     }
 
     public static <T extends WebElement> T highlight(T element, final String color, WebDriver driver) {
