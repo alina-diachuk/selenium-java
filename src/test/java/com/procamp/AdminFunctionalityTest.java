@@ -13,14 +13,16 @@ public class AdminFunctionalityTest extends BaseTest {
         return Constants.adminPanelUrl;
     }
 
-        @Test
-        public void loginWithAlreadyEnteredCreds() {
-            loginPage.clickLoginBtn();
-            assertTrue(adminPanelPage.logoIsDisplayed());
-            adminPanelPage.openListOfMenuItems();
-        }
-
+    @Test
+    public void loginWithAlreadyEnteredCreds() {
+        loginPage.clickLoginBtn();
+        assertTrue(adminPanelPage.logoIsDisplayed());
+        adminPanelPage.openListOfMenuItems();
     }
+
+
+
+}
 
 
 
