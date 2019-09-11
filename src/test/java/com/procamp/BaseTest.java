@@ -2,6 +2,7 @@ package com.procamp;
 
 import com.procamp.litecart.pages.AdminPanelPage;
 import com.procamp.litecart.pages.LoginPage;
+import com.procamp.litecart.pages.ShopPage;
 import com.procamp.litecart.utils.Listener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
@@ -15,6 +16,7 @@ public abstract class BaseTest {
 
     protected LoginPage loginPage;
     protected AdminPanelPage adminPanelPage;
+    protected ShopPage shopPage;
     EventFiringWebDriver ewd;
 
     protected abstract String getUrl();
@@ -35,6 +37,7 @@ public abstract class BaseTest {
 
         loginPage = new LoginPage(ewd);
         adminPanelPage = new AdminPanelPage(ewd);
+        shopPage = new ShopPage(ewd);
 
     }
 

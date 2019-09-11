@@ -12,6 +12,10 @@ public class ShopFunctionalityTest extends BaseTest {
 
     @Test
     public void addAndRemoveProductsToCart() {
+        shopPage.tapOnProduct();
+//        shopPage.chooseDuckSize();
+        shopPage.setBtnAddToCart();
+        shopPage.removeProductFromCart();
 
     }
 }
