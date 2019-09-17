@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
+
 public class BasePage {
 
     public EventFiringWebDriver ewd;
@@ -21,19 +23,36 @@ public class BasePage {
     }
 
     public void waitElementToClick(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(ewd, 10);
+        WebDriverWait wait = new WebDriverWait(ewd, 20);
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public void waitForPageLoad() {
-        new WebDriverWait(ewd, 60).until((ExpectedCondition<Boolean>) ewd ->
-                ((JavascriptExecutor)ewd).executeScript("return document.readyState").equals("complete"));
+        new WebDriverWait(ewd, 1000).until((ExpectedCondition<Boolean>) ewd ->
+                ((JavascriptExecutor) ewd).executeScript("return document.readyState").equals("complete"));
     }
 
-    public void scrollToElement(WebElement element){
+    public void scrollToElement(WebElement element) {
         Actions actions = new Actions(ewd);
         actions.moveToElement(element);
         actions.perform();
     }
 
+    public void scrollUp() {
+        JavascriptExecutor jse = ewd;
+        jse.executeScript("window.scrollBy(0,-250)");
+    }
+
+    public void tapOnElement(WebElement element) {
+        Actions actions = new Actions(ewd);
+        actions.moveToElement(element).click().build().perform();
+    }
+
+    public boolean isElementPresent(WebElement element) {
+        return element != null && element.isDisplayed();
+    }
 }
+
+
+
+
