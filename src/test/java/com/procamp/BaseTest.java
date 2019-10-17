@@ -4,6 +4,7 @@ import com.procamp.litecart.pages.AdminPanelPage;
 import com.procamp.litecart.pages.LoginPage;
 import com.procamp.litecart.pages.ShopPage;
 import com.procamp.litecart.utils.Listener;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.Dimension;
@@ -23,7 +24,6 @@ public abstract class BaseTest {
     protected AdminPanelPage adminPanelPage;
     protected ShopPage shopPage;
     EventFiringWebDriver ewd;
-    static WebDriver wd;
 
     public static final String USERNAME = "alinadiachuk1";
     public static final String AUTOMATE_KEY = "QfTAndQxZANsWWpYsH7z";
@@ -34,20 +34,22 @@ public abstract class BaseTest {
 
     @Before
     public void setUp() throws MalformedURLException {
-     //   WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().setup();
 
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("browser", "Chrome");
-        caps.setCapability("browser_version", "62.0");
-        caps.setCapability("os", "Windows");
-        caps.setCapability("os_version", "10");
-        caps.setCapability("resolution", "1024x768");
-        caps.setCapability("name", "Bstack-[Java] Sample Test");
+//        DesiredCapabilities caps = new DesiredCapabilities();
+//        caps.setCapability("browser", "Chrome");
+//        caps.setCapability("browser_version", "62.0");
+//        caps.setCapability("os", "Windows");
+//        caps.setCapability("os_version", "10");
+//        caps.setCapability("resolution", "1024x768");
+//        caps.setCapability("name", "Bstack-[Java] Sample Test");
 
-        ewd = new EventFiringWebDriver(new RemoteWebDriver(new URL(URL), caps));
+//        ewd = new EventFiringWebDriver(new RemoteWebDriver(new URL(URL), caps));
+        ewd = new EventFiringWebDriver(new ChromeDriver());
+
         ewd.register(new Listener());
 
-        ewd.manage().window().setSize(new Dimension(1800, 800));
+        ewd.manage().window().setSize(new Dimension(1600, 800));
 
         ewd.get(getUrl());
         ewd.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);

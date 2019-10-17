@@ -10,7 +10,7 @@ public class AdminFunctionalityTest extends BaseTest {
 
     @Override
     protected String getUrl() {
-        return Constants.adminPanelUrl;
+        return Constants.ADMIN_PANEL_URL;
     }
 
     @Test
